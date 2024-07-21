@@ -11,14 +11,14 @@
 
             <h5>Navbar content here</h5>
 
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button">
+            <div class="dropdown" data-bs-theme="light">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
                     Theme
                 </button>
-
-                <ul class="dropdown-menu">
-                    <li><a href="#" class="dropdown-item active">Light</a></li>
-                    <li><a href="#" class="dropdown-item active">Dark</a></li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
+                    <li><a class="dropdown-item active" href="#">Light</a></li>
+                    <li><a class="dropdown-item" href="#">Dark</a></li>
+                    <li><a class="dropdown-item" href="#">Auto</a></li>
                 </ul>
             </div>
 
@@ -58,6 +58,10 @@
     private bool collapseNavMenu = false;
     private bool collapseRightbar = false;
 
+    [Inject]
+    public IJSRuntime JSRuntime  { get; set; }
+
+
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private string? NavbarCssClass => collapseRightbar ? "collapse" : null;
@@ -70,6 +74,14 @@
     private void ToggleRightBar()
     {
         collapseRightbar = !collapseRightbar;
-        
+
     }
+
+    private async void ChangeTheme()
+    {
+        await JSRuntime.InvokeAsync<string>("changeTheme");
+    }
+
+
+
     }
