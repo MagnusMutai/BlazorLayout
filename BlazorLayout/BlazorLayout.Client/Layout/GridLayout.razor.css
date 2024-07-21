@@ -10,25 +10,6 @@
     z-index: 1;
 }
 
-.input-decor {
-    border: 2px solid rgba(0, 0, 0);
-    width: 10rem;
-    height: 2.5rem;
-}
-
-.navbar-toggler {
-    appearance: none;
-    cursor: pointer;
-    color: white;
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-}
-
-.navbar-toggler:checked {
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
 main {
     flex: 1;
 }
@@ -38,7 +19,7 @@ main {
     min-width: 160px;
     height: 100vh;
     position: sticky;
-    top: 110px;
+    top: 56px;
 }
 
 .toolbar {
@@ -46,37 +27,18 @@ main {
     min-width: 160px;
     height: 100vh;
     position: sticky;
-    top: 110px;
+    top: 56px;
 }
 
 
 .top-row {
     background-color: #f7f7f7;
     border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
     height: 3.5rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
-    }
-
-    .top-row ::deep a:hover, .top-row ::deep .btn-link:hover {
-        text-decoration: underline;
-    }
-
-    .top-row ::deep a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-/*@media (max-width: 768px) {
-
-}*/
 
 .collapse {
     display: none;
@@ -103,7 +65,7 @@ main {
         width: 0;
     }
 
-    .top-row, article {
+     article {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }

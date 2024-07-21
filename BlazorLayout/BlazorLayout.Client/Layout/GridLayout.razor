@@ -1,38 +1,64 @@
-﻿@* @inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 
 <div class="page">
 
-            <div class="top-row px-4 auth">
-            </div>
-            <div class="sidebar ">
-                <NavBar />
-            </div>
-            <main >
-                <article class="content px-4">
-                    @Body
-                </article>
-            </main>
-            <div class="toolbar">
+    <main>
+        <div class="top-row">
 
-                <Toolbar />
-
+            <div class="input-decor">
+                <button @onclick="ToggleNavMenu" style=" width:160px;">Toggle <br /> Menu</button>
             </div>
 
+            <h5>Navbar content here</h5>
+
+            <div class="input-decor">
+                <button @onclick="ToggleRightBar" style=" width:160px;">Toggle <br /> Menu</button>
+            </div>
+
+        </div>
+
+
+        <div class="d-flex">
+            <div class="sidebar @NavMenuCssClass" @onclick="ToggleNavMenu">
+                <NavMenu />
+            </div>
+
+            <article class="content px-4 w-100">
+                @Body
+            </article>
+
+            <div class="toolbar @NavbarCssClass" @onclick="ToggleNavMenu">
+                <BlazorLayout.Client.Pages.Toolbar></BlazorLayout.Client.Pages.Toolbar>
+            </div>
+        </div>
+
+    </main>
 </div>
 
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div> *@
+@code {
+    private bool collapseNavMenu = false;
+    private bool collapseRightbar = false;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private string? NavbarCssClass => collapseRightbar ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    private void ToggleRightBar()
+    {
+        collapseRightbar = !collapseRightbar;
+        
+    }
+    }
