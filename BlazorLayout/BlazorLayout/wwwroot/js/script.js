@@ -1,4 +1,5 @@
-﻿function changeTheme() {
+﻿export function darkMode() {
     var element = document.getElementById("html1");
-    element.classList.add('data-bs-theme="dark"');
+    element.setAttribute("data-bs-theme", "dark");
 }
+

@@ -18,7 +18,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
                     <li><a @onclick="LightMode" class="dropdown-item" href="#">Light</a></li>
                     <li><a @onclick="DarkMode" class="dropdown-item" href="#">Dark</a></li>
-                    <li><a class="dropdown-item" href="#">Auto</a></li>
+                    <li><a @onclick="Auto" class="dropdown-item" href="#">Auto</a></li>
                 </ul>
             </div>
 
@@ -85,6 +85,11 @@
     private async void LightMode()
     {
         await JSRuntime.InvokeVoidAsync("lightMode");
+    }
+    
+    private async void Auto()
+    {
+        await JSRuntime.InvokeVoidAsync("auto");
     }
 
 
