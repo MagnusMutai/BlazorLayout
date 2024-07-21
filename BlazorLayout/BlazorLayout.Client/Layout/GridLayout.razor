@@ -16,8 +16,8 @@
                     Theme
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
-                    <li><a class="dropdown-item active" href="#">Light</a></li>
-                    <li><a class="dropdown-item" href="#">Dark</a></li>
+                    <li><a @onclick="LightMode" class="dropdown-item" href="#">Light</a></li>
+                    <li><a @onclick="DarkMode" class="dropdown-item" href="#">Dark</a></li>
                     <li><a class="dropdown-item" href="#">Auto</a></li>
                 </ul>
             </div>
@@ -77,11 +77,15 @@
 
     }
 
-    private async void ChangeTheme()
+    private async void DarkMode()
     {
-        await JSRuntime.InvokeAsync<string>("changeTheme");
+        await JSRuntime.InvokeVoidAsync("darkMode");
     }
 
+    private async void LightMode()
+    {
+        await JSRuntime.InvokeVoidAsync("lightMode");
+    }
 
 
     }
