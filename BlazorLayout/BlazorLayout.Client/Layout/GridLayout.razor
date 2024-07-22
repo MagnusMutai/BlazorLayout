@@ -16,9 +16,9 @@
                     Theme
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
-                    <li><a @onclick="LightMode" class="dropdown-item" href="#">Light</a></li>
-                    <li><a @onclick="DarkMode" class="dropdown-item" href="#">Dark</a></li>
-                    <li><a @onclick="Auto" class="dropdown-item" href="#">Auto</a></li>
+                    <li><a @onclick="@(() => SwitchTheme("light"))" class="dropdown-item" href="#">Light</a></li>
+                    <li><a @onclick="@(() => SwitchTheme("dark"))" class="dropdown-item" href="#">Dark</a></li>
+                    <li><a @onclick="@(() => SwitchTheme("auto"))" class="dropdown-item" href="#">Auto</a></li>
                 </ul>
             </div>
 
@@ -57,6 +57,7 @@
 @code {
     private bool collapseNavMenu = false;
     private bool collapseRightbar = false;
+    // private bool dark = false;
 
     [Inject]
     public IJSRuntime JSRuntime  { get; set; }
@@ -74,23 +75,22 @@
     private void ToggleRightBar()
     {
         collapseRightbar = !collapseRightbar;
-
     }
 
-    private async void DarkMode()
+    private async void SwitchTheme(string mode)
     {
-        await JSRuntime.InvokeVoidAsync("darkMode");
+        if (mode == "dark")
+        {
+            await JSRuntime.InvokeVoidAsync("darkMode");
+        }
+        else if (mode == "light")
+        {
+            await JSRuntime.InvokeVoidAsync("lightMode");
+        } 
+        else
+        {
+            await JSRuntime.InvokeVoidAsync("auto");
+        }
     }
-
-    private async void LightMode()
-    {
-        await JSRuntime.InvokeVoidAsync("lightMode");
-    }
-    
-    private async void Auto()
-    {
-        await JSRuntime.InvokeVoidAsync("auto");
-    }
-
 
     }
