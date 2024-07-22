@@ -18,7 +18,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
                     <li><a @onclick="@(() => SwitchTheme("light"))" class="dropdown-item" href="#">Light</a></li>
                     <li><a @onclick="@(() => SwitchTheme("dark"))" class="dropdown-item" href="#">Dark</a></li>
-                    <li><a @onclick="@(() => SwitchTheme("auto"))" class="dropdown-item" href="#">Auto</a></li>
+                    @* <li><a @onclick="@(() => SwitchTheme("auto"))" class="dropdown-item" href="#">Auto</a></li> *@
                 </ul>
             </div>
 
@@ -87,10 +87,10 @@
         {
             await JSRuntime.InvokeVoidAsync("lightMode");
         } 
-        else
-        {
-            await JSRuntime.InvokeVoidAsync("auto");
-        }
+        // else
+        // {
+        //     await JSRuntime.InvokeVoidAsync("auto");
+        // }
     }
 
     }
