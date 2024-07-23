@@ -11,15 +11,8 @@
 
             <h5>Navbar content here</h5>
 
-            <div class="dropdown" data-bs-theme="light">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
-                    Theme
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
-                    <li><a @onclick="@(() => SwitchTheme("light"))" class="dropdown-item" href="#">Light</a></li>
-                    <li><a @onclick="@(() => SwitchTheme("dark"))" class="dropdown-item" href="#">Dark</a></li>
-                    @* <li><a @onclick="@(() => SwitchTheme("auto"))" class="dropdown-item" href="#">Auto</a></li> *@
-                </ul>
+            <div class="form-check form-switch" @onclick="SwitchTheme">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
             </div>
 
             <div>
@@ -77,20 +70,8 @@
         collapseRightbar = !collapseRightbar;
     }
 
-    private async void SwitchTheme(string mode)
+    private async void SwitchTheme()
     {
-        if (mode == "dark")
-        {
-            await JSRuntime.InvokeVoidAsync("darkMode");
-        }
-        else if (mode == "light")
-        {
-            await JSRuntime.InvokeVoidAsync("lightMode");
-        } 
-        // else
-        // {
-        //     await JSRuntime.InvokeVoidAsync("auto");
-        // }
-    }
-
+        await JSRuntime.InvokeVoidAsync("switchTheme");
+    } 
     }
