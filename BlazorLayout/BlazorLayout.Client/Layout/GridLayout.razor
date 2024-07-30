@@ -6,7 +6,7 @@
         <div class="top-row">
 
             <div>
-                <button @onclick="ToggleNavMenu" style=" width:160px;">Toggle <br /> Menu</button>
+                <button id="trow" style=" width:160px;">Toggle <br /> Menu</button>
             </div>
 
             <h5>Navbar content here</h5>
@@ -74,4 +74,19 @@
     {
         await JSRuntime.InvokeVoidAsync("switchTheme");
     } 
+
+    //to remove
+    public void CallJavascript()
+    {
+        JSRuntime.InvokeVoidAsync("swithDark");
     }
+
+    //to remove
+    [JSInvokable]
+    public static void EnableSaveBtn()
+    {
+        GridLayout gridLayout = new GridLayout();
+
+        gridLayout.CallJavascript();
+    }
+}
